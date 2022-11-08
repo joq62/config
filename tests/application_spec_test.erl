@@ -46,7 +46,7 @@ read_spec()->
   
     {ok,Spec}=application_spec:read_spec(),
     [
-     [{name,"nodelog"},{vsn,["0.1.0"]},{app,nodelog},{gitpath,"https://github.com/joq62/nodelog.git"}]
+     [{name,"controller_app"},{vsn,["0.1.0"]},{app,controller_app},{gitpath,"https://github.com/joq62/controller_app.git"}]
      |_]=lists:sort(Spec),
       
     io:format("Stop OK !!! ~p~n",[?FUNCTION_NAME]),
@@ -64,10 +64,7 @@ all_names()->
      io:format("Start ~p~n",[{?MODULE,?FUNCTION_NAME}]),
 
     AllNames=application_spec:all_names(),
-    ["nodelog",
-     "test_app_1",
-     "web_conbee_c201"
-    ]=lists:sort(AllNames),
+    ["controller_app"|_]=lists:sort(AllNames),
   
     io:format("Stop OK !!! ~p~n",[?FUNCTION_NAME]),    
     ok.

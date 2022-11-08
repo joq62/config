@@ -3,7 +3,7 @@
 	{name,"test_cluster"},
 	{cookie,"test_cluster"},
 	{connect_name,"test_cluster_0"},
-	{pod_name,["test_cluster_1",
+	{pod_names,["test_cluster_1",
 		   "test_cluster_2",
 		   "test_cluster_3",
 		   "test_cluster_4",

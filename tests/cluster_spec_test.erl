@@ -47,16 +47,12 @@ read_spec()->
   
     {ok,Spec}=cluster_spec:read_spec(),
     [
-     [{name,"test_cluster"},{cookie,"test_cluster"},{connect_name,"test_cluster_0"},
-      {pod_names,["test_cluster_1",
-		 "test_cluster_2",
-		 "test_cluster_3",
-		 "test_cluster_4",
-		 "test_cluster_5",
-		 "test_cluster_6"]},
-      {pod_dir_extension,".dir"},
+     [{name,"test_cluster"},
+      {cookie,"test_cluster_cookie"},
+      {connect_nodes,['test_cluster_connect@c100',
+		      'test_cluster_connect@c200',
+		      'test_cluster_connect@c201']},
       {num_pods,6},
-      {pod_services,["pod_node"]},
       {hostnames,["c100","c200","c201"]}
      ]
     ]=lists:sort(Spec),
@@ -91,17 +87,12 @@ info()->
      
     Info=cluster_spec:info("test_cluster"),
     [{name,"test_cluster"},
-     {cookie,"test_cluster"},
-     {connect_name,"test_cluster_0"},
-     {pod_names,["test_cluster_1",
-		"test_cluster_2",
-		"test_cluster_3",
-		"test_cluster_4",
-		"test_cluster_5",
-		"test_cluster_6"]},
-     {pod_dir_extension,".dir"},
+     {cookie,"test_cluster_cookie"},
+     {connect_nodes,
+      ['test_cluster_connect@c100',
+       'test_cluster_connect@c200',
+       'test_cluster_connect@c201']},
      {num_pods,6},
-     {pod_services,["pod_node"]},
      {hostnames,["c100","c200","c201"]}
     ]=Info,
 
@@ -119,17 +110,12 @@ item()->
 
   
     "test_cluster"=config:cluster_name("test_cluster"),
-    "test_cluster"=config:cluster_cookie("test_cluster"),
-    "test_cluster_0"=config:cluster_connect_name("test_cluster"),
-    ["test_cluster_1",
-     "test_cluster_2",
-     "test_cluster_3",
-     "test_cluster_4",
-     "test_cluster_5",
-     "test_cluster_6"]=config:cluster_pod_names("test_cluster"),
-    ".dir"=config:cluster_pod_dir_extension("test_cluster"),
+    "test_cluster_cookie"=config:cluster_cookie("test_cluster"),
+    ['test_cluster_connect@c100',
+     'test_cluster_connect@c200',
+     'test_cluster_connect@c201'
+    ]=config:cluster_connect_nodes("test_cluster"),
     6=config:cluster_num_pods("test_cluster"),
-    ["pod_node"]=config:cluster_pod_services("test_cluster"),
     ["c100","c200","c201"]=config:cluster_hostnames("test_cluster"),
   
 

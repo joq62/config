@@ -55,11 +55,8 @@
 -export([ 
 	  cluster_name/1,
 	  cluster_cookie/1,
-	  cluster_connect_name/1,
-	  cluster_pod_names/1,
-	  cluster_pod_dir_extension/1,
+	  cluster_connect_nodes/1,
 	  cluster_num_pods/1,
-	  cluster_pod_services/1,
 	  cluster_hostnames/1
 	
 	  
@@ -143,17 +140,10 @@ cluster_name(ClusterName)->
     gen_server:call(?SERVER, {cluster,name,ClusterName},infinity).
 cluster_cookie(ClusterName)->
     gen_server:call(?SERVER, {cluster,cookie,ClusterName},infinity).
-cluster_connect_name(ClusterName)->
-    gen_server:call(?SERVER, {cluster,connect_name,ClusterName},infinity).
-cluster_pod_names(ClusterName)->
-    gen_server:call(?SERVER, {cluster,pod_names,ClusterName},infinity).
-cluster_pod_dir_extension(ClusterName)->
-    gen_server:call(?SERVER, {cluster,pod_dir_extension,ClusterName},infinity).
+cluster_connect_nodes(ClusterName)->
+    gen_server:call(?SERVER, {cluster,connect_nodes,ClusterName},infinity).
 cluster_num_pods(ClusterName)->
     gen_server:call(?SERVER, {cluster,num_pods,ClusterName},infinity).
-
-cluster_pod_services(ClusterName)->
-    gen_server:call(?SERVER, {cluster,pod_services,ClusterName},infinity).
 
 cluster_hostnames(ClusterName)->
     gen_server:call(?SERVER, {cluster,hostnames,ClusterName},infinity).
